@@ -1,3 +1,9 @@
 default:
+  name: User Name
   email: user@email.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+player_a:
+  name: Player 1
+  email: player_1@email.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>

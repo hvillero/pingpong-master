@@ -1,0 +1,28 @@
+<h1 class='page-header'>Leaderboard</h1>
+
+<% if @players.empty? %>
+  <div class="alert alert-warning" role="alert">
+    No Games played it. Maybe you want to <%= link_to "log the first game?", new_game_path %>
+  </div>
+<% else %>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Score</th>
+      <th>Games Played</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @players.each_with_index do |player, i| %>
+      <tr>
+        <td><%= i + 1 %></td>
+        <td><%= player.name.capitalize %></td>
+        <td><%= player.total_points.round(2) %></td>
+        <td><%= player.games.count %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
